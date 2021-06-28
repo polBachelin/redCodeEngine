@@ -9,20 +9,11 @@
 #define ENTITYMANAGER_HPP_
 
 #include "Entity.hpp"
+#include "EntityPool.hpp"
 #include <unordered_map>
 #include <vector>
 
 class EntityManager {
-
-    class IEntityPool {
-
-    };
-
-    template<class T>
-    class EntityPool {
-
-    };
-
     public:
         EntityManager();
         ~EntityManager();

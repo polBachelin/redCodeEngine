@@ -17,12 +17,12 @@ project(${NAME}Engine
 include_directories(./include)
 include_directories(./src)
 
-find_package(
-        Boost 1.65 REQUIRED
-        COMPONENTS test
-)
-
-install(PROGRAMS ${Boost_LIBRARIES} DESTINATION ./lib)
+#find_package(
+#        Boost 1.65 REQUIRED
+#        COMPONENTS test
+#)
+#
+#install(PROGRAMS ${Boost_LIBRARIES} DESTINATION ./lib)
 
 set(SRCS
         src/Core/Allocators/Allocator.cpp
