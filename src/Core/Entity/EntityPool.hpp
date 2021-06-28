@@ -14,8 +14,11 @@ template<class T>
 class EntityPool : public IEntityPool {
     public:
         EntityPool();
-        ~EntityPool();
+        virtual ~EntityPool();
 
+        void destroyEntity(AEntity *e) {
+            e->~AEntity();
+        }
     protected:
     private:
 };

@@ -20,7 +20,9 @@ class EntityManager {
 
 
         template<class T, class... Args>
-        static const EntityID createEntity(Args... args);
+        static const EntityID createEntity(Args... args) {
+                        
+        }
         //static const Entity *getEntity(const EntityID &id);
         static void destroyEntity(const EntityID &id);
 
@@ -38,8 +40,10 @@ class EntityManager {
             }
             return pool;
         }
+
     private:
         std::unordered_map<EntityTypeID, IEntityPool *> _entityPools;
+        std::unordered_map<AEntity, EntityID> _entityTable;
         std::vector<EntityID> _toDestroyEntities;
 };
 

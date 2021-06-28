@@ -8,13 +8,13 @@
 #ifndef IENTITYPOOL_HPP_
 #define IENTITYPOOL_HPP_
 
+#include "AEntity.hpp"
+
 class IEntityPool {
     public:
-        IEntityPool();
-        ~IEntityPool();
+        virtual ~IEntityPool();
 
-    protected:
-    private:
+        virtual void destroyEntity(AEntity *) = 0;
 };
 
 #endif /* !IENTITYPOOL_HPP_ */
