@@ -21,7 +21,7 @@ class EntityManager {
 
         template<class T, class... Args>
         static const EntityID createEntity(Args... args) {
-                        
+        
         }
         //static const Entity *getEntity(const EntityID &id);
         static void destroyEntity(const EntityID &id);
@@ -42,6 +42,7 @@ class EntityManager {
         }
 
     private:
+        // TODO don't use unordered map as it is not optimized - create your own tables
         std::unordered_map<EntityTypeID, IEntityPool *> _entityPools;
         std::unordered_map<AEntity, EntityID> _entityTable;
         std::vector<EntityID> _toDestroyEntities;

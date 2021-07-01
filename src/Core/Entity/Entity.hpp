@@ -13,20 +13,18 @@
 template<class T>
 class Entity : public AEntity {
 
-    void operator delete(void *) = delete;
-    void operator delete[](void *) = delete;
+    //void operator delete(void *) = delete;
+    //void operator delete[](void *) = delete;
     public:
         Entity() {};
         ~Entity() {};
 
-        static const EntityTypeID STATIC_ENTITY_TYPE_ID;
-
-        const EntityTypeID getEntityTypeID() const { return STATIC_ENTITY_TYPE_ID; }
-
+        EntityTypeID getEntityTypeID() const { return _entityTypeID; }
     private:
+        static const EntityTypeID _entityTypeID;
 };
 
 template<class T>
-const EntityTypeID Entity<T>::STATIC_ENTITY_TYPE_ID = TypeID::get();
+const EntityTypeID Entity<T>::_entityTypeID = TypeIDCounter<AEntity>::get<T>();
 
 #endif /* !AENTITY_HPP_ */

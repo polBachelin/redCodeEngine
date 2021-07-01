@@ -16,7 +16,11 @@ project(${NAME}Engine
 ## Includes
 include_directories(./include)
 include_directories(./src)
-
+include_directories(./src/utils)
+include_directories(./src/Entity_Tests)
+include_directories(./src/Core/Components)
+include_directories(./src/Core/Entity)
+include_directories(./src/Core/Allocators)
 #find_package(
 #        Boost 1.65 REQUIRED
 #        COMPONENTS test
@@ -25,12 +29,15 @@ include_directories(./src)
 #install(PROGRAMS ${Boost_LIBRARIES} DESTINATION ./lib)
 
 set(SRCS
-        src/Core/Allocators/Allocator.cpp
+        src/main.cpp
+        src/Entity_Tests/Bomb.cpp
 )
 
-add_library(${NAME} SHARED
-        ${SRCS}
-)
+# add_library(${NAME} SHARED
+#         ${SRCS}
+# )
+
+add_executable(${NAME} ${SRCS})
 
 target_include_directories(${NAME} PRIVATE .)
 

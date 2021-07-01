@@ -9,17 +9,18 @@
 #define AENTITY_HPP_
 
 #include "TypeID.hpp"
+#include <cstdint>
 
-using EntityTypeID = size_t;
-using EntityID = size_t;
+using EntityTypeID = TypeID;
+using EntityID = TypeID;
 
 class AEntity {
     public:
-        AEntity();
-        ~AEntity();
+        AEntity() {};
+        ~AEntity() {};
 
-        virtual const EntityTypeID getEntityTypeID() const = 0;
-        const EntityID getEntityID() const { return _id; }
+        virtual EntityTypeID getEntityTypeID() const = 0;
+        EntityID getEntityID() const { return _id; }
         void setEnable(bool enable) { _enabled = enable; }
         bool getEnable() const { return _enabled; }
 
