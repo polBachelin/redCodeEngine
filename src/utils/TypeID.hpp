@@ -15,18 +15,18 @@ using TypeID = unsigned int;
 template<class T>
 class TypeIDCounter {
 
-    static TypeID _count;
+    static inline TypeID _count;
 
     public:
 
         template<class U>
-        static const TypeID get() 
+        static TypeID get() 
         {
-            static const TypeID staticTypeID { _count++ };
+            static TypeID staticTypeID { _count++ };
             return staticTypeID;
         }
 
-        static const TypeID get() 
+        static TypeID get() 
         {
             return _count;
         }
