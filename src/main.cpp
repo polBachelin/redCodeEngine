@@ -5,7 +5,6 @@
 ** main
 */
 
-#include "Table.hpp"
 #include "Bomb.hpp"
 #include "EntityManager.hpp"
 #include "EntityPool.hpp"
@@ -17,8 +16,11 @@ int main(void)
     EntityManager manager;
 
     manager.createEntity<Bomb>();
+    std::cout << std::endl;
     manager.createEntity<Bomb>();
-    manager.destroyEntityID(0);
+    std::cout << std::endl;
+    manager.destroyEntity(0);
+    manager.cleanDestroyedEntities();
     //Bomb *test = new Bomb();
     //Bomb *nb = new Bomb();
 
@@ -26,6 +28,6 @@ int main(void)
     // std::cout << tab.addObjectToTable(nb) << std::endl;
     // std::cout << nb->getEntityID() << std::endl;
     // std::cout << test->getEntityTypeID() << std::endl;
-    
+    std::cout << "---- ENDING MAIN ----" << std::endl;
     return 0;
 }

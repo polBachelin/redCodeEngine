@@ -10,7 +10,7 @@
 
 #include "Entity.hpp"
 #include "EntityPool.hpp"
-#include "Table.hpp"
+#include "EntityTable.hpp"
 #include <unordered_map>
 #include <vector>
 
@@ -45,13 +45,18 @@ class EntityManager {
             return pool;
         }
 
+        void destroyEntity(const EntityID &id) {
+            _toDestroyEntities.push_back(id);
+            _numberEntitiesToDestroy++;
+        }
+
         EntityID generateEntityID(AEntity *e);
         void destroyEntityID(EntityID id);
         void cleanDestroyedEntities();
 
     private:
         std::unordered_map<EntityTypeID, IEntityPool *> _entityPools;
-        Table _entityTable;
+        EntityTable _entityTable;
         std::vector<EntityID> _toDestroyEntities;
         size_t _numberEntitiesToDestroy;
 };

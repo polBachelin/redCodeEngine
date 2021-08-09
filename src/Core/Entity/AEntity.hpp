@@ -17,7 +17,7 @@ using EntityID = TypeID;
 class AEntity {
     public:
         AEntity() : _enabled(true) {};
-        ~AEntity() {};
+        virtual ~AEntity() {};
 
         virtual EntityTypeID getEntityTypeID() const = 0;
         EntityID getEntityID() const { return _id; }

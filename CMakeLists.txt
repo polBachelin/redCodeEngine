@@ -20,6 +20,9 @@ include_directories(./src/utils)
 include_directories(./src/Entity_Tests)
 include_directories(./src/Core/Components)
 include_directories(./src/Core/Entity)
+include_directories(./src/Core/Entity/Manager)
+include_directories(./src/Core/Entity/utils)
+include_directories(./src/Core/Entity/Pool)
 include_directories(./src/Core/Allocators)
 #find_package(
 #        Boost 1.65 REQUIRED
@@ -31,7 +34,7 @@ include_directories(./src/Core/Allocators)
 set(SRCS
         src/main.cpp
         src/Entity_Tests/Bomb.cpp
-        src/Core/Entity/EntityManager.cpp
+        src/Core/Entity/Manager/EntityManager.cpp
 )
 
 # add_library(${NAME} SHARED

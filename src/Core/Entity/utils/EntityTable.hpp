@@ -24,14 +24,14 @@ union Data {
     Data(T index) : _index(index) {}
 };
 
-class Table {
+class EntityTable {
 
     using Entry = std::pair<EntityID, AEntity *>;
     public:
-        Table() {
+        EntityTable() {
             increaseTable();
         }
-        ~Table() {}
+        ~EntityTable() {}
 
         EntityID addObjectToTable(AEntity *object) {
             EntityID i = 0;
@@ -52,15 +52,13 @@ class Table {
             return EntityID(i);
         }
 
-        void removeObjectFromData(const EntityID &data) const {
-            for (auto i : _table) {
-                if (i.first != -1)
-                    std::cout << "Entity : " << i.first << std::endl;
-            }
-            AEntity *e = _table[data].second;
-            e = nullptr;
+        void removeObjectFromData(const EntityID &data) {
+            _table[data].second = nullptr;
         }
 
+        AEntity *operator[](const EntityID &data) const {
+            return _table[data].second;
+        }
     protected:
     private:
         void increaseTable() {

@@ -26,7 +26,7 @@ class EntityPool : public IEntityPool {
             return e;
         }
         void destroyEntity(AEntity *e) {
-            e->~AEntity();
+            delete e;
         }
     protected:
         std::list<AEntity *> _objects;
