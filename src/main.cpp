@@ -7,13 +7,25 @@
 
 #include "Table.hpp"
 #include "Bomb.hpp"
+#include "EntityManager.hpp"
+#include "EntityPool.hpp"
+#include <iostream>
 
 int main(void)
 {
-    Table<AEntity, EntityID> tab;
-    Bomb *test = new Bomb();
+    std::cout << "---- STARTING MAIN ----" << std::endl;
+    EntityManager manager;
 
-    tab.addObjectToTable(test);
+    manager.createEntity<Bomb>();
+    manager.createEntity<Bomb>();
+    manager.destroyEntityID(0);
+    //Bomb *test = new Bomb();
+    //Bomb *nb = new Bomb();
 
+    // std::cout << tab.addObjectToTable(test) << std::endl;
+    // std::cout << tab.addObjectToTable(nb) << std::endl;
+    // std::cout << nb->getEntityID() << std::endl;
+    // std::cout << test->getEntityTypeID() << std::endl;
+    
     return 0;
 }

@@ -9,8 +9,10 @@
 
 Bomb::Bomb()
 {
+    std::cout << "Creating bomb entity" << std::endl;
 }
 
 Bomb::~Bomb()
 {
+    std::cout << "Destroying bomb entity" << std::endl;
 }

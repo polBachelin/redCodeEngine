@@ -12,8 +12,8 @@
 
 class IEntityPool {
     public:
-        virtual ~IEntityPool();
-
+        virtual ~IEntityPool() {};
+        
         virtual void destroyEntity(AEntity *) = 0;
 };
 

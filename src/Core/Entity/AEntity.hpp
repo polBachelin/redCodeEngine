@@ -16,11 +16,12 @@ using EntityID = TypeID;
 
 class AEntity {
     public:
-        AEntity() {};
+        AEntity() : _enabled(true) {};
         ~AEntity() {};
 
         virtual EntityTypeID getEntityTypeID() const = 0;
         EntityID getEntityID() const { return _id; }
+        void setEntityID(EntityID id) { _id = id; }
         void setEnable(bool enable) { _enabled = enable; }
         bool getEnable() const { return _enabled; }
 

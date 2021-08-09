@@ -9,7 +9,7 @@
 #define TABLE_HPP_
 
 #include <vector>
-
+#include "Entity.hpp"
 
 template<typename T>
 union Data {
@@ -24,34 +24,41 @@ union Data {
     Data(T index) : _index(index) {}
 };
 
-
-template<class T, class dataType, size_t size = 1024>
 class Table {
 
-    using Entry = std::pair<dataType, T *>;
+    using Entry = std::pair<EntityID, AEntity *>;
     public:
         Table() {
             increaseTable();
         }
         ~Table() {}
 
-        int addObjectToTable(T *object) {
-            dataType i = 0;
+        EntityID addObjectToTable(AEntity *object) {
+            EntityID i = 0;
+            EntityID id = 0;
+
             for (; i < _table.size(); i++) {
                 if (_table[i].second == nullptr) {
                     _table[i].second = object;
-                    _table[i].first = _table[i].first + 1;
-                    return i;
+                    id = EntityID(i);
+                    _table[i].first = id;
+                    std::cout << "Adding object to table\n";
+                    return id;
                 }
             }
             increaseTable();
             _table[i].first = 1;
             _table[i].second = object;
-            return i;
+            return EntityID(i);
         }
 
-        void removeObjectFromData(const dataType &data) const {
-            _table[data].second = nullptr;
+        void removeObjectFromData(const EntityID &data) const {
+            for (auto i : _table) {
+                if (i.first != -1)
+                    std::cout << "Entity : " << i.first << std::endl;
+            }
+            AEntity *e = _table[data].second;
+            e = nullptr;
         }
 
     protected:
@@ -59,11 +66,11 @@ class Table {
         void increaseTable() {
             size_t old = _table.size();
 
-            size_t nSize = old + size;
+            size_t nSize = old + 1024;
             _table.resize(nSize);
 
-            for (dataType i = old; i < nSize; i++) {
-                _table[i] = Entry(0, nullptr);
+            for (EntityID i = old; i < nSize; i++) {
+                _table[i] = Entry(-1, nullptr);
             }
         }
         std::vector<Entry> _table;

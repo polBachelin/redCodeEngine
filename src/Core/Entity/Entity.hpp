@@ -20,8 +20,8 @@ class Entity : public AEntity {
         ~Entity() {};
 
         EntityTypeID getEntityTypeID() const { return _entityTypeID; }
-    private:
         static const EntityTypeID _entityTypeID;
+    private:
 };
 
 template<class T>

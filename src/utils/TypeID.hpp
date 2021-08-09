@@ -9,7 +9,7 @@
 #define TYPEID_HPP_
 
 #include <cstddef>
-
+#include <iostream>
 using TypeID = unsigned int;
 
 template<class T>
@@ -23,11 +23,13 @@ class TypeIDCounter {
         static TypeID get() 
         {
             static TypeID staticTypeID { _count++ };
+            std::cout << "Type count " << _count << std::endl;
             return staticTypeID;
         }
 
         static TypeID get() 
         {
+            std::cout << "Type count " << _count << std::endl;
             return _count;
         }
 };

@@ -5,7 +5,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_COLOR_MAKEFILE ON)
-set(NAME recCode)
+set(NAME redCode)
 
 project(${NAME}Engine
         LANGUAGES CXX
@@ -31,6 +31,7 @@ include_directories(./src/Core/Allocators)
 set(SRCS
         src/main.cpp
         src/Entity_Tests/Bomb.cpp
+        src/Core/Entity/EntityManager.cpp
 )
 
 # add_library(${NAME} SHARED
