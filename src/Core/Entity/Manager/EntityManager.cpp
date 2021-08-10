@@ -9,13 +9,13 @@
 
 EntityManager::EntityManager()
 {
-    std::cout << "Initializing EntityManager!" << std::endl;
+    LOG_F(INFO, "Initializing EntityManager!");
 }
 
 EntityManager::~EntityManager()
 {
     cleanDestroyedEntities();
-    std::cout << "Destroying EntityManager!" << std::endl;
+    LOG_F(INFO, "Destroying EntityManager!");
 }
 
 EntityID EntityManager::generateEntityID(AEntity *e)
@@ -36,10 +36,8 @@ void EntityManager::cleanDestroyedEntities()
         EntityTypeID typeID = e->getEntityTypeID();
 
         auto it = _entityPools.find(typeID);
-        if (it == _entityPools.end()) {
-            std::cout << "could not find pool\n";
+        if (it == _entityPools.end())
             return;
-        }
         //TODO remove components from entity
         it->second->destroyEntity(e);
         destroyEntityID(id);

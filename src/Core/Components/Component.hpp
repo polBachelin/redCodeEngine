@@ -8,19 +8,22 @@
 #ifndef COMPONENT_HPP_
 #define COMPONENT_HPP_
 
-#include "TypeID.hpp"
-
-using ComponentTypeID = TypeID;
+#include "AComponent.hpp"
 
 template<class T>
-class Component {
+class Component : public AComponent {
     public:
-        Component() = default;
-        ~Component() = default;
+        Component() {};
+        ~Component() {};
 
-        const ComponentTypeID getComponentTypeID() const noexcept { return _componentTypeID; }
-    protected:
+        ComponentTypeID getStaticComponentTypeID() const 
+        {
+            return _componentTypeID;
+        }
         static const ComponentTypeID _componentTypeID;
 };
+
+template<class T>
+const ComponentTypeID Component<T>::_componentTypeID = TypeIDCounter<AComponent>::get<T>();
 
 #endif /* !COMPONENT_HPP_ */

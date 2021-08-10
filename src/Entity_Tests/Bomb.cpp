@@ -9,10 +9,10 @@
 
 Bomb::Bomb()
 {
-    std::cout << "Creating bomb entity" << std::endl;
+    LOG_F(INFO, "Creating bomb entity");
 }
 
 Bomb::~Bomb()
 {
-    std::cout << "Destroying bomb entity" << std::endl;
+    LOG_F(INFO, "Destroying bomb entity");
 }

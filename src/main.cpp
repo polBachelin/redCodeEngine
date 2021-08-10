@@ -9,16 +9,17 @@
 #include "EntityManager.hpp"
 #include "EntityPool.hpp"
 #include <iostream>
+#include "loguru/loguru.hpp"
 
 int main(void)
 {
-    std::cout << "---- STARTING MAIN ----" << std::endl;
+    loguru::g_stderr_verbosity = 1;
+    loguru::add_file("latest_readable.log", loguru::Truncate, loguru::Verbosity_INFO);
+    LOG_F(INFO, "STARTING MAIN");
     EntityManager manager;
 
     manager.createEntity<Bomb>();
-    std::cout << std::endl;
-    manager.createEntity<Bomb>();
-    std::cout << std::endl;
+    manager.createEntity<Bomb>();    
     manager.destroyEntity(0);
     manager.cleanDestroyedEntities();
     //Bomb *test = new Bomb();
@@ -28,6 +29,6 @@ int main(void)
     // std::cout << tab.addObjectToTable(nb) << std::endl;
     // std::cout << nb->getEntityID() << std::endl;
     // std::cout << test->getEntityTypeID() << std::endl;
-    std::cout << "---- ENDING MAIN ----" << std::endl;
+    LOG_F(INFO, "ENDING MAIN");
     return 0;
 }

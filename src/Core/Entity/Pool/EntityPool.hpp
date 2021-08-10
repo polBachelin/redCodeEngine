@@ -10,12 +10,13 @@
 
 #include "IEntityPool.hpp"
 #include <list>
+#include "loguru/loguru.hpp"
 
 template<class T>
 class EntityPool : public IEntityPool {
     public:
         EntityPool() {
-            std::cout << "Creating entity Pool" << std::endl;
+            LOG_F(INFO, "Creating entity Pool");
         };
         virtual ~EntityPool() {};
 

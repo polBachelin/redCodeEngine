@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Entity.hpp"
+#include "loguru/loguru.hpp"
 
 template<typename T>
 union Data {
@@ -42,7 +43,6 @@ class EntityTable {
                     _table[i].second = object;
                     id = EntityID(i);
                     _table[i].first = id;
-                    std::cout << "Adding object to table\n";
                     return id;
                 }
             }

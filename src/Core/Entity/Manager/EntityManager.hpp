@@ -13,6 +13,7 @@
 #include "EntityTable.hpp"
 #include <unordered_map>
 #include <vector>
+#include "loguru/loguru.hpp"
 
 class EntityManager {
     public:
@@ -25,7 +26,7 @@ class EntityManager {
             EntityID eID = generateEntityID(e);
 
             e->setEntityID(eID);
-            std::cout << "Created entity with ID == " << eID << std::endl;
+            LOG_F(INFO, "Created entity with ID == %i", eID);
 //            AEntity *entity = new (e)T(std::forward<Args>(args)...);
             return eID;
         }

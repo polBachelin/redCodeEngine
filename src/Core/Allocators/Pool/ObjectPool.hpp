@@ -11,6 +11,7 @@
 #include <cstddef>
 #include <iostream>
 #include <list>
+#include "loguru/loguru.hpp"
 
 template<class Object, size_t MAX_OBJECTS>
 class ObjectPool {
@@ -18,7 +19,7 @@ class ObjectPool {
 
     public:
         ObjectPool() {
-            std::cout << "Creating Object Pool\n";
+            LOG_F(INFO, "Creating Object Pool");
         }
         ~ObjectPool();
 

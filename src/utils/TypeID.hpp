@@ -10,6 +10,7 @@
 
 #include <cstddef>
 #include <iostream>
+#include "loguru.hpp"
 using TypeID = unsigned int;
 
 template<class T>
@@ -23,13 +24,13 @@ class TypeIDCounter {
         static TypeID get() 
         {
             static TypeID staticTypeID { _count++ };
-            std::cout << "Type count " << _count << std::endl;
+            LOG_F(INFO, "Type count %i", _count);
             return staticTypeID;
         }
 
         static TypeID get() 
         {
-            std::cout << "Type count " << _count << std::endl;
+            LOG_F(INFO, "Type count %i", _count);
             return _count;
         }
 };

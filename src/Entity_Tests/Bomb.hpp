@@ -9,6 +9,7 @@
 #define BOMB_HPP_
 
 #include "Entity.hpp"
+#include "loguru.hpp"
 
 class Bomb : public Entity<Bomb>{
     public:
