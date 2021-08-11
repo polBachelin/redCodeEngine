@@ -10,7 +10,9 @@
 
 #include "TypeID.hpp"
 #include "Entity.hpp"
+
 using ComponentTypeID = TypeID;
+using ComponentID = TypeID;
 
 class AComponent {
     public:

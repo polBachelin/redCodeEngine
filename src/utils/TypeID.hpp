@@ -11,6 +11,7 @@
 #include <cstddef>
 #include <iostream>
 #include "loguru.hpp"
+
 using TypeID = unsigned int;
 
 template<class T>

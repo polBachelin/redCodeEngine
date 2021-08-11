@@ -15,8 +15,6 @@
 
 template<class Object, size_t MAX_OBJECTS>
 class ObjectPool {
-
-
     public:
         ObjectPool() {
             LOG_F(INFO, "Creating Object Pool");

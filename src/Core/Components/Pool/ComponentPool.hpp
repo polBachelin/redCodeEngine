@@ -16,11 +16,23 @@ template<class T>
 class ComponentPool : public IComponentPool {
     public:
         ComponentPool() {
-            LOG_F(INFO, "Creating Entity Pool");
+            LOG_F(INFO, "Creating Component Pool");
         }
         virtual ~ComponentPool() {};
 
+        AComponent *createComponent() {
+            AComponent *c = new T();
+
+            _objects.push_back(c);
+            return c;
+        }
+
+        void destroyComponent(AComponent *c) {
+            delete c;
+        }
+
     protected:
+        std::list<AComponent *> _objects;
     private:
 };
 
