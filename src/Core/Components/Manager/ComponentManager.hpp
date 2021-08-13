@@ -37,7 +37,12 @@ class ComponentManager {
 
         template<class T, class... Args>
         T *addComponentToEntity(EntityID id, Args&&... args) {
+            AComponent *c = getComponentPool<T>()->createComponent();
+            ComponentID cID = generateComponentID(c);
 
+            c->_owner = id;
+            LOG_F(INFO, "Created component with ID : %i || and || TYPE : %s", cID, getComponentPool<T>()->getTypeName());
+            return static_cast<T *>(c);
         }
 
         template<class T>
@@ -53,7 +58,7 @@ class ComponentManager {
         T *retrieveComponent(const EntityID &id) {
 
         }
-
+        ComponentID generateComponentID(AComponent *c);
         void mapEntityComponentToTable(const EntityID &id, const ComponentID &cId);
         void unmapEntityComponentFromTable(const EntityID &id);
         void memsetTable(size_t start, size_t end);

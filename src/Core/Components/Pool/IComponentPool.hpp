@@ -15,6 +15,7 @@ class IComponentPool {
         virtual ~IComponentPool() {};
 
         virtual void destroyComponent(AComponent *) = 0;
+        virtual const char *getTypeName() const = 0;
 };
 
 #endif /* !ICOMPONENTPOOL_HPP_ */

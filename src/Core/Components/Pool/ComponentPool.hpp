@@ -20,6 +20,11 @@ class ComponentPool : public IComponentPool {
         }
         virtual ~ComponentPool() {};
 
+        const char *getTypeName() const override {
+            static const char *name { typeid(T).name() };
+            return name;
+        }
+        
         AComponent *createComponent() {
             AComponent *c = new T();
 
