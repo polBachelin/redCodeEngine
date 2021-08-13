@@ -11,6 +11,7 @@
 #include "IEntityPool.hpp"
 #include <list>
 #include "loguru/loguru.hpp"
+#include <typeinfo>
 
 template<class T>
 class EntityPool : public IEntityPool {
@@ -18,7 +19,17 @@ class EntityPool : public IEntityPool {
         EntityPool() {
             LOG_F(INFO, "Creating entity Pool");
         };
-        virtual ~EntityPool() {};
+        virtual ~EntityPool() {
+            LOG_F(INFO, "Destroying Entity Pool of type : %s", getEntityTypeName());
+            for (auto i : _objects) {
+                delete i;
+            }
+        };
+
+        const char *getEntityTypeName() const override {
+            static const char *name { typeid(T).name() };
+            return name;
+        }
 
         AEntity *createObject() {
             AEntity *e = new T();
@@ -27,6 +38,7 @@ class EntityPool : public IEntityPool {
             return e;
         }
         void destroyEntity(AEntity *e) {
+            _objects.remove(e);
             delete e;
         }
     protected:

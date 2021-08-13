@@ -1,0 +1,14 @@
+File verbosity level: 0
+date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
+2021-08-13 15:46:07.869 (   0.040s) [         4E02B80]             loguru.cpp:830   INFO| Logging to 'latest_readable.log', mode: 'w', verbosity: 0
+2021-08-13 15:46:07.874 (   0.044s) [         4E02B80]               main.cpp:18    INFO| STARTING MAIN
+2021-08-13 15:46:07.881 (   0.051s) [         4E02B80]      EntityManager.cpp:12    INFO| Initializing EntityManager!
+2021-08-13 15:46:07.884 (   0.055s) [         4E02B80]         EntityPool.hpp:20    INFO| Creating entity Pool
+2021-08-13 15:46:07.893 (   0.063s) [         4E02B80]               Bomb.cpp:12    INFO| Creating bomb entity
+2021-08-13 15:46:07.898 (   0.069s) [         4E02B80]      EntityManager.hpp:29    INFO| Created entity with ID : 0 || and || TYPE : 4Bomb
+2021-08-13 15:46:07.898 (   0.069s) [         4E02B80]               Bomb.cpp:12    INFO| Creating bomb entity
+2021-08-13 15:46:07.899 (   0.069s) [         4E02B80]      EntityManager.hpp:29    INFO| Created entity with ID : 1 || and || TYPE : 4Bomb
+2021-08-13 15:46:07.904 (   0.075s) [         4E02B80]      EntityManager.cpp:43    INFO| Destroying entity of type : 4Bomb
+2021-08-13 15:46:07.908 (   0.078s) [         4E02B80]               Bomb.cpp:17    INFO| Destroying bomb entity
+2021-08-13 15:46:07.909 (   0.080s) [         4E02B80]               main.cpp:32    INFO| ENDING MAIN
+2021-08-13 15:46:07.910 (   0.080s) [         4E02B80]             loguru.cpp:662   INFO| loguru::shutdown()

@@ -19,6 +19,7 @@ find_package(Threads)
 ## Includes
 include_directories(./include)
 include_directories(./src)
+include_directories(./src/Core)
 include_directories(./src/utils)
 include_directories(./src/Entity_Tests)
 include_directories(./src/Core/Components)

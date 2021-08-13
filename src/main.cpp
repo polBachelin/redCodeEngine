@@ -30,5 +30,6 @@ int main(void)
     // std::cout << nb->getEntityID() << std::endl;
     // std::cout << test->getEntityTypeID() << std::endl;
     LOG_F(INFO, "ENDING MAIN");
+    loguru::shutdown();
     return 0;
 }

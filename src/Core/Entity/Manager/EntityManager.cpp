@@ -14,8 +14,11 @@ EntityManager::EntityManager()
 
 EntityManager::~EntityManager()
 {
-    cleanDestroyedEntities();
-    LOG_F(INFO, "Destroying EntityManager!");
+    LOG_F(INFO, "Cleaning EntityManager!");
+    for (auto it : _entityPools) {
+        delete it.second;
+        it.second = nullptr;
+    }
 }
 
 EntityID EntityManager::generateEntityID(AEntity *e)
@@ -36,8 +39,11 @@ void EntityManager::cleanDestroyedEntities()
         EntityTypeID typeID = e->getEntityTypeID();
 
         auto it = _entityPools.find(typeID);
-        if (it == _entityPools.end())
+        DLOG_F(INFO, "Destroying entity of type : %s", it->second->getEntityTypeName());
+        if (it == _entityPools.end()) {
+            DLOG_F(WARNING, "No more entities in the Pool, stopping");
             return;
+        }
         //TODO remove components from entity
         it->second->destroyEntity(e);
         destroyEntityID(id);

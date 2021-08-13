@@ -26,7 +26,7 @@ class EntityManager {
             EntityID eID = generateEntityID(e);
 
             e->setEntityID(eID);
-            LOG_F(INFO, "Created entity with ID == %i", eID);
+            LOG_F(INFO, "Created entity with ID : %i || and || TYPE : %s", eID, getEntityPool<T>()->getEntityTypeName());
 //            AEntity *entity = new (e)T(std::forward<Args>(args)...);
             return eID;
         }

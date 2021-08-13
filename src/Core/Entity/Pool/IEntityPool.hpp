@@ -14,6 +14,7 @@ class IEntityPool {
     public:
         virtual ~IEntityPool() {};
         
+        virtual const char *getEntityTypeName() const = 0;
         virtual void destroyEntity(AEntity *) = 0;
 };
 

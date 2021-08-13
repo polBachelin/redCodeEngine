@@ -10,6 +10,8 @@
 
 #include "ComponentPool.hpp"
 #include "Component.hpp"
+#include "GlobalVariables.hpp"
+#include "loguru.hpp"
 #include <vector>
 #include <unordered_map>
 
@@ -17,11 +19,6 @@ class ComponentManager {
     public:
         ComponentManager();
         ~ComponentManager();
-
-        template<class T, class... Args>
-        T *addComponentToEntity(EntityID id, Args&&... args) {
-
-        }
 
         template<class T>
         ComponentPool<T> *getComponentPool() {
@@ -38,11 +35,28 @@ class ComponentManager {
             return pool;
         }
 
+        template<class T, class... Args>
+        T *addComponentToEntity(EntityID id, Args&&... args) {
+
+        }
+
         template<class T>
         void removeComponent(const EntityID &id) {
             
         }
 
+        void removeAllComponents(const EntityID &id) {
+
+        }
+
+        template<class T>
+        T *retrieveComponent(const EntityID &id) {
+
+        }
+
+        void mapEntityComponentToTable(const EntityID &id, const ComponentID &cId);
+        void unmapEntityComponentFromTable(const EntityID &id);
+        void memsetTable(size_t start, size_t end);
 
     protected:
         std::unordered_map<ComponentTypeID, IComponentPool *> _componentPools;
