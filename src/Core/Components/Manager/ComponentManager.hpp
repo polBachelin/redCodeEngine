@@ -21,7 +21,8 @@ class ComponentManager {
         ~ComponentManager();
 
         template<class T>
-        ComponentPool<T> *getComponentPool() {
+        ComponentPool<T> *getComponentPool() 
+        {
             ComponentTypeID id = T::_componentTypeID;
             ComponentPool<T> *pool = nullptr;
 
@@ -36,7 +37,8 @@ class ComponentManager {
         }
 
         template<class T, class... Args>
-        T *addComponentToEntity(EntityID id, Args&&... args) {
+        T *addComponentToEntity(EntityID id, Args&&... args) 
+        {
             AComponent *c = getComponentPool<T>()->createComponent();
             ComponentID cID = generateComponentID(c);
 
@@ -46,10 +48,17 @@ class ComponentManager {
         }
 
         template<class T>
-        void removeComponent(const EntityID &id) {
+        AComponent *retrieveAComponent(const EntityID &id)
+        {
             ComponentTypeID componentTypeID = T::_componentTypeID;
             ComponentID componentID = _entityComponentTable[id][componentTypeID];
-            AComponent *component = _componentTable[componentID];
+            return _componentTable[componentID];
+        }
+
+        template<class T>
+        void removeComponent(const EntityID &id) 
+        {
+            AComponent *component = retrieveAComponent(id);
             ComponentPool<T> *pool = getComponentPool<T>();
 
             if (component == nullptr) {
@@ -60,17 +69,41 @@ class ComponentManager {
             unmapEntityComponentFromTable(id, componentID, componentTypeID);
         }
 
-        void removeAllComponents(const EntityID &id) {
+        void removeAllComponents(const EntityID &id) 
+        {
+            size_t nbComponents = _entityComponentTable[id].size();
+
+            for (size_t i = 0; i < nbComponents; i++) {
+                ComponentID componentId = _entityComponentTable[id][i];
+                if (componentId == INVALID_TYPE_ID)
+                    continue;
+                AComponent *c = _componentTable[componentId];
+                if (c == nullptr)
+                    continue;
+                auto pool = _componentPools.find(i);
+                if (pool != _componentPools.end())
+                    pool->second->destroyComponent(c);
+                else
+                    LOG_F(ERROR, "Trying to destroy non-existant component");
+                unmapEntityComponentFromTable(id, componentId, i);
+            }
         }
 
         template<class T>
-        T *retrieveComponent(const EntityID &id) {
+        T *retrieveComponent(const EntityID &id) 
+        {
+            AComponent *c = retrieveAComponent<T>(id);
 
+            if (c == nullptr) {
+                LOG_F(ERROR, "Could not find component with type %s on Entity with ID %i", pool->getTypeName(), id);
+                return nullptr;
+            }
+            return static_cast<T *>(c);
         }
+
         ComponentID generateComponentID(AComponent *c);
         void mapEntityComponentToTable(const EntityID &id, const ComponentID &cId, const ComponentTypeID &typeID);
         void unmapEntityComponentFromTable(const EntityID &id, const ComponentID &cID, const ComponentTypeID &typeID);
-
         void memsetTable(size_t start, size_t end);
 
     protected:
