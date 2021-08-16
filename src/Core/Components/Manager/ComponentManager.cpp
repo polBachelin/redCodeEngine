@@ -22,7 +22,7 @@ ComponentManager::~ComponentManager()
     }
 }
 
-void ComponentManager::mapEntityComponentToTable(const EntityID &id, const ComponentID &cId)
+void ComponentManager::mapEntityComponentToTable(const EntityID &id, const ComponentID &cId, const ComponentTypeID &typeID)
 {
     if (_entityComponentTable.size() <= id) {
         size_t oldSize = _entityComponentTable.size();
@@ -30,12 +30,27 @@ void ComponentManager::mapEntityComponentToTable(const EntityID &id, const Compo
         _entityComponentTable.resize(oldSize + TABLE_GROWTH);
         memsetTable(oldSize, oldSize + TABLE_GROWTH);
     }
-    _entityComponentTable[id].push_back(cId);
+    _entityComponentTable[id][typeID] = cId;
 }
 
-void ComponentManager::unmapEntityComponentFromTable(const EntityID &id)
+void ComponentManager::unmapEntityComponentFromTable(const EntityID &id, const ComponentID &cID, const ComponentTypeID &typeID)
 {
+    _entityComponentTable[id][typeID] = INVALID_TYPE_ID;
+}
 
+ComponentID ComponentManager::generateComponentID(AComponent *c)
+{
+    size_t i = 0;
+
+    for (; _componentTable.size(); i++) {
+        if (_componentTable[i] == nullptr) {
+            _componentTable[i] = c;
+            return (ComponentID)i;
+        }
+    }
+    _componentTable.resize(_componentTable.size() + TABLE_GROWTH, nullptr);
+    _componentTable[i] = c;
+    return (ComponentID)i;
 }
 
 void ComponentManager::memsetTable(size_t start, size_t end)

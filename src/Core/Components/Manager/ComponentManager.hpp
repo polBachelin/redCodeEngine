@@ -47,11 +47,20 @@ class ComponentManager {
 
         template<class T>
         void removeComponent(const EntityID &id) {
-            
+            ComponentTypeID componentTypeID = T::_componentTypeID;
+            ComponentID componentID = _entityComponentTable[id][componentTypeID];
+            AComponent *component = _componentTable[componentID];
+            ComponentPool<T> *pool = getComponentPool<T>();
+
+            if (component == nullptr) {
+                LOG_F(ERROR, "Could not find component with type %s on Entity with ID %i", pool->getTypeName(), id);
+                return;
+            }
+            pool->destroyComponent(component);
+            unmapEntityComponentFromTable(id, componentID, componentTypeID);
         }
 
         void removeAllComponents(const EntityID &id) {
-
         }
 
         template<class T>
@@ -59,8 +68,9 @@ class ComponentManager {
 
         }
         ComponentID generateComponentID(AComponent *c);
-        void mapEntityComponentToTable(const EntityID &id, const ComponentID &cId);
-        void unmapEntityComponentFromTable(const EntityID &id);
+        void mapEntityComponentToTable(const EntityID &id, const ComponentID &cId, const ComponentTypeID &typeID);
+        void unmapEntityComponentFromTable(const EntityID &id, const ComponentID &cID, const ComponentTypeID &typeID);
+
         void memsetTable(size_t start, size_t end);
 
     protected:
