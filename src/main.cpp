@@ -25,14 +25,12 @@ int main(void)
     manager.getComponentManager()->addComponentToEntity<Transform>(id, 10, 10);
     manager.destroyEntity(0);
     manager.cleanDestroyedEntities();
-    //Bomb *test = new Bomb();
-    //Bomb *nb = new Bomb();
-
     // std::cout << tab.addObjectToTable(test) << std::endl;
     // std::cout << tab.addObjectToTable(nb) << std::endl;
     // std::cout << nb->getEntityID() << std::endl;
     // std::cout << test->getEntityTypeID() << std::endl;
     LOG_F(INFO, "ENDING MAIN");
+    delete componentManager;
     loguru::shutdown();
     return 0;
 }

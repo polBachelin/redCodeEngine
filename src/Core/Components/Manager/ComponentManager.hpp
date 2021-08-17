@@ -39,10 +39,10 @@ class ComponentManager {
         template<class T, class... Args>
         T *addComponentToEntity(EntityID id, Args&&... args) 
         {
-            AComponent *c = getComponentPool<T>()->createComponent();
+            AComponent *c = new T(std::forward<Args>(args)...);
             ComponentID cID = generateComponentID(c);
-            AComponent *inplace = new (c)T(std::forward<Args>(args)...);
-
+            
+            getComponentPool<T>()->addComponent(c);
             c->setOwner(id);
             mapEntityComponentToTable(id, cID, T::_componentTypeID);
             LOG_F(INFO, "Created component with ID : %i || and || TYPE : %s", cID, getComponentPool<T>()->getTypeName());

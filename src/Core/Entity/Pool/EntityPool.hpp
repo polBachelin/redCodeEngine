@@ -31,6 +31,11 @@ class EntityPool : public IEntityPool {
             return name;
         }
 
+        void addObject(AEntity *e)
+        {
+            _objects.push_back(e);
+        }
+
         AEntity *createObject() {
             AEntity *e = new T();
 

@@ -23,12 +23,12 @@ class EntityManager {
 
         template<class T, class... Args>
         EntityID createEntity(Args&&... args) {
-            AEntity *e = getEntityPool<T>()->createObject();
+            AEntity *e = new T(std::forward<Args>(args)...);
             EntityID eID = generateEntityID(e);
 
+            getEntityPool<T>()->addObject(e);
             e->setEntityID(eID);
             LOG_F(INFO, "Created entity with ID : %i || and || TYPE : %s", eID, getEntityPool<T>()->getEntityTypeName());
-//            AEntity *entity = new (e)T(std::forward<Args>(args)...);
             return eID;
         }
 
