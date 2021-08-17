@@ -58,15 +58,17 @@ class ComponentManager {
         template<class T>
         void removeComponent(const EntityID &id) 
         {
-            AComponent *component = retrieveAComponent(id);
             ComponentPool<T> *pool = getComponentPool<T>();
+            ComponentTypeID componentTypeID = T::_componentTypeID;
+            ComponentID componentID = _entityComponentTable[id][componentTypeID];
+            AComponent *component = _componentTable[componentID];
 
             if (component == nullptr) {
                 LOG_F(ERROR, "Could not find component with type %s on Entity with ID %i", pool->getTypeName(), id);
                 return;
             }
             pool->destroyComponent(component);
-            unmapEntityComponentFromTable(id, componentID, componentTypeID);
+            unmapEntityComponentFromTable(id, T::_componentTypeID, componentTypeID);
         }
 
         void removeAllComponents(const EntityID &id) 
@@ -75,7 +77,7 @@ class ComponentManager {
 
             for (size_t i = 0; i < nbComponents; i++) {
                 ComponentID componentId = _entityComponentTable[id][i];
-                if (componentId == INVALID_TYPE_ID)
+                if (componentId == (ComponentID)INVALID_TYPE_ID)
                     continue;
                 AComponent *c = _componentTable[componentId];
                 if (c == nullptr)
@@ -95,7 +97,7 @@ class ComponentManager {
             AComponent *c = retrieveAComponent<T>(id);
 
             if (c == nullptr) {
-                LOG_F(ERROR, "Could not find component with type %s on Entity with ID %i", pool->getTypeName(), id);
+                LOG_F(ERROR, "Could not find component with type %s on Entity with ID %i", getComponentPool<T>()->getTypeName(), id);
                 return nullptr;
             }
             return static_cast<T *>(c);

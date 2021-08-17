@@ -19,8 +19,8 @@ class AComponent {
         AComponent() = default;
         ~AComponent() = default;
 
-        const ComponentTypeID getComponentTypeID() const noexcept { return _componentTypeID; }
-        const EntityID getOwner() { return _owner; }
+        ComponentTypeID getComponentTypeID() const noexcept { return _componentTypeID; }
+        EntityID getOwner() { return _owner; }
         bool isActive() const { return _enabled;}
         void setActive(bool active) { _enabled = active; }
 
