@@ -30,6 +30,7 @@ void ComponentManager::mapEntityComponentToTable(const EntityID &id, const Compo
         _entityComponentTable.resize(oldSize + TABLE_GROWTH);
         memsetTable(oldSize, oldSize + TABLE_GROWTH);
     }
+    LOG_F(INFO, "Mapping componentID to table : TYPE ID = %i", typeID);
     _entityComponentTable[id][typeID] = cId;
 }
 

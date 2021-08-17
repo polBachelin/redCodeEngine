@@ -23,7 +23,7 @@ int main(void)
     EntityID id = manager.createEntity<Bomb>();
     manager.createEntity<Bomb>();
     manager.getComponentManager()->addComponentToEntity<Transform>(id, 10, 10);
-    manager.destroyEntity(1);
+    manager.destroyEntity(0);
     manager.cleanDestroyedEntities();
     //Bomb *test = new Bomb();
     //Bomb *nb = new Bomb();

@@ -33,6 +33,7 @@ class ComponentPool : public IComponentPool {
         }
 
         void destroyComponent(AComponent *c) {
+            _objects.remove(c);
             delete c;
         }
 

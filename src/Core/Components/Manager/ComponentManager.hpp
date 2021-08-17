@@ -44,6 +44,7 @@ class ComponentManager {
             AComponent *inplace = new (c)T(std::forward<Args>(args)...);
 
             c->setOwner(id);
+            mapEntityComponentToTable(id, cID, T::_componentTypeID);
             LOG_F(INFO, "Created component with ID : %i || and || TYPE : %s", cID, getComponentPool<T>()->getTypeName());
             return static_cast<T *>(c);
         }
@@ -76,6 +77,7 @@ class ComponentManager {
         {
             size_t nbComponents = _entityComponentTable[id].size();
 
+            LOG_F(WARNING, "Nb components %li", nbComponents);
             for (size_t i = 0; i < nbComponents; i++) {
                 ComponentID componentId = _entityComponentTable[id][i];
                 if (componentId == (ComponentID)INVALID_TYPE_ID)
@@ -84,9 +86,10 @@ class ComponentManager {
                 if (c == nullptr)
                     continue;
                 auto pool = _componentPools.find(i);
-                if (pool != _componentPools.end())
+                if (pool != _componentPools.end()) {
+                    LOG_F(WARNING, "Calling destroy component from pool");
                     pool->second->destroyComponent(c);
-                else
+                } else
                     LOG_F(ERROR, "Trying to destroy non-existant component");
                 unmapEntityComponentFromTable(id, componentId, i);
             }

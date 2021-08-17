@@ -16,8 +16,8 @@ using ComponentID = TypeID;
 
 class AComponent {
     public:
-        AComponent() = default;
-        ~AComponent() = default;
+        AComponent() {};
+        virtual ~AComponent() {};
 
         ComponentTypeID getComponentTypeID() const noexcept { return _componentTypeID; }
         EntityID getOwner() { return _owner; }

@@ -45,7 +45,7 @@ void EntityManager::cleanDestroyedEntities()
             DLOG_F(WARNING, "No more entities in the Pool, stopping");
             return;
         }
-        //TODO remove components from entity
+        _componentManager->removeAllComponents(id);
         it->second->destroyEntity(e);
         destroyEntityID(id);
     }
