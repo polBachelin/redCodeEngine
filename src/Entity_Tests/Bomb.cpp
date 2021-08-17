@@ -9,7 +9,7 @@
 
 Bomb::Bomb()
 {
-    LOG_F(INFO, "Creating bomb entity");
+    LOG_F(INFO, "Creating bomb entity"); 
 }
 
 Bomb::~Bomb()

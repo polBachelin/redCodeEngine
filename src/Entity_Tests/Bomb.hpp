@@ -10,13 +10,17 @@
 
 #include "Entity.hpp"
 #include "loguru.hpp"
+#include "Transform.hpp"
+#include "ComponentManager.hpp"
+#include "EntityManager.hpp"
 
 class Bomb : public Entity<Bomb>{
     public:
         Bomb();
         ~Bomb();
-
+        friend class ComponentManager;
     protected:
+        Transform *_pos;
     private:
 };
 

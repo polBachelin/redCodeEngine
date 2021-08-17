@@ -21,6 +21,7 @@ class AComponent {
 
         ComponentTypeID getComponentTypeID() const noexcept { return _componentTypeID; }
         EntityID getOwner() { return _owner; }
+        void setOwner(const EntityID &id) { _owner = id; }
         bool isActive() const { return _enabled;}
         void setActive(bool active) { _enabled = active; }
 

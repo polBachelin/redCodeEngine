@@ -8,6 +8,7 @@
 #include "Bomb.hpp"
 #include "EntityManager.hpp"
 #include "EntityPool.hpp"
+#include "Transform.hpp"
 #include <iostream>
 #include "loguru/loguru.hpp"
 
@@ -16,11 +17,13 @@ int main(void)
     loguru::g_stderr_verbosity = 1;
     loguru::add_file("latest_readable.log", loguru::Truncate, loguru::Verbosity_INFO);
     LOG_F(INFO, "STARTING MAIN");
-    EntityManager manager;
+    ComponentManager *componentManager = new ComponentManager();
+    EntityManager manager(componentManager);
 
+    EntityID id = manager.createEntity<Bomb>();
     manager.createEntity<Bomb>();
-    manager.createEntity<Bomb>();    
-    manager.destroyEntity(0);
+    manager.getComponentManager()->addComponentToEntity<Transform>(id, 10, 10);
+    manager.destroyEntity(1);
     manager.cleanDestroyedEntities();
     //Bomb *test = new Bomb();
     //Bomb *nb = new Bomb();

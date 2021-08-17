@@ -11,13 +11,14 @@
 #include "Entity.hpp"
 #include "EntityPool.hpp"
 #include "EntityTable.hpp"
+#include "ComponentManager.hpp"
 #include <unordered_map>
 #include <vector>
 #include "loguru/loguru.hpp"
 
 class EntityManager {
     public:
-        EntityManager();
+        EntityManager(ComponentManager *componentManager);
         ~EntityManager();
 
         template<class T, class... Args>
@@ -52,6 +53,7 @@ class EntityManager {
         }
 
         EntityID generateEntityID(AEntity *e);
+        ComponentManager *getComponentManager() const;
         void destroyEntityID(EntityID id);
         void cleanDestroyedEntities();
 
@@ -60,6 +62,7 @@ class EntityManager {
         EntityTable _entityTable;
         std::vector<EntityID> _toDestroyEntities;
         size_t _numberEntitiesToDestroy;
+        ComponentManager *_componentManager;
 };
 
 #endif /* !ENTITYMANAGER_HPP_ */

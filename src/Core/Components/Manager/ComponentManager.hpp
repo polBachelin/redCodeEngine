@@ -41,8 +41,9 @@ class ComponentManager {
         {
             AComponent *c = getComponentPool<T>()->createComponent();
             ComponentID cID = generateComponentID(c);
+            AComponent *inplace = new (c)T(std::forward<Args>(args)...);
 
-            c->_owner = id;
+            c->setOwner(id);
             LOG_F(INFO, "Created component with ID : %i || and || TYPE : %s", cID, getComponentPool<T>()->getTypeName());
             return static_cast<T *>(c);
         }

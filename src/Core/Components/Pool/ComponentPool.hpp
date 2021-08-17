@@ -26,7 +26,7 @@ class ComponentPool : public IComponentPool {
         }
         
         AComponent *createComponent() {
-            AComponent *c = new T();
+            AComponent *c = new AComponent();
 
             _objects.push_back(c);
             return c;

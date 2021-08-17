@@ -7,7 +7,8 @@
 
 #include "EntityManager.hpp"
 
-EntityManager::EntityManager()
+EntityManager::EntityManager(ComponentManager *componentManager)
+: _componentManager(componentManager)
 {
     LOG_F(INFO, "Initializing EntityManager!");
 }
@@ -49,4 +50,9 @@ void EntityManager::cleanDestroyedEntities()
         destroyEntityID(id);
     }
     _toDestroyEntities.clear();
+}
+
+ComponentManager *EntityManager::getComponentManager() const
+{
+    return _componentManager;
 }

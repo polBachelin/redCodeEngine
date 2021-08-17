@@ -42,6 +42,7 @@ set(SRCS
         src/main.cpp
         loguru/loguru.cpp
         src/Entity_Tests/Bomb.cpp
+        src/Entity_Tests/Transform.cpp
         src/Core/Entity/Manager/EntityManager.cpp
         src/Core/Components/Manager/ComponentManager.cpp
 )
