@@ -11,6 +11,7 @@
 #include "TypeID.hpp"
 
 using SystemTypeID = TypeID;
+using SystemID = u_int64_t;
 
 class ASystem {
     public:
