@@ -31,5 +31,4 @@ class AComponent {
         bool _enabled;
     private:
 };
-
 #endif /* !ACOMPONENT_HPP_ */

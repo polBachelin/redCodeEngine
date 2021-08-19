@@ -20,12 +20,15 @@ class ASystem {
 
         virtual const SystemTypeID getSystemTypeID() const = 0;
         virtual const char *getSystemTypeName() const = 0;
-        virtual void Update() = 0;
+        virtual void update() = 0;
 
+        bool getEnabled() const { return _enabled; }
+        void setEnabled(bool enable) { _enabled = enable; }
         const float getUpdateInterval() const { return _updateInterval; }
         void setUpdateInterval(const float &interval) { _updateInterval = interval; }
     protected:
         float _updateInterval;
+        bool _enabled;
     private:
 };
 

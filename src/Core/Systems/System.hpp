@@ -29,7 +29,7 @@ class System : public ASystem {
             return systemTypeName;
         }
 
-        virtual void Update() override {}
+        virtual void update() override {}
     protected:
     private:
 };

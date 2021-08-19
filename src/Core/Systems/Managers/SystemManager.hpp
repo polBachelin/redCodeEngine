@@ -38,7 +38,29 @@ class SystemManager {
             return system;
         }
 
-        void Update(float dt);
+        template<class T>
+        T *getSystem() const
+        {
+            auto sys = _systems.find((SystemTypeID)T::_systemTypeID);
+            if (sys == _systems.end()) {
+                LOG_F(ERROR, "No system with type : \'%s\'", typeid(T).name());
+                return nullptr;
+            }
+            return (T*)sys->second;
+        }
+
+        template<class T>
+        void setEnableOnSystem(bool value)
+        {
+            auto sys = _systems.find((SystemTypeID)T::_systemTypeID);
+            if (sys != _systems.end())
+                sys->second->setEnabled(value);
+            else
+                LOG_F(ERROR, "No system of type \'%s\' has been registered", typeid(T).name());
+        }
+
+        void update();
+
     protected:
         std::vector<ASystem *> _systemsToExecute;
         std::unordered_map<SystemTypeID, ASystem *> _systems;
