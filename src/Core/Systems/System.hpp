@@ -18,7 +18,7 @@ class System : public ASystem {
         virtual ~System();
 
         static const SystemTypeID _systemTypeID;
-        virtual const SystemTypeID getSystemTypeID() const override
+        virtual SystemTypeID getSystemTypeID() const override
         {
             return _systemTypeID;
         }

@@ -51,7 +51,7 @@ set(SRCS
         src/Entity_Tests/Transform.cpp
         src/Core/Entity/Manager/EntityManager.cpp
         src/Core/Components/Manager/ComponentManager.cpp
-        src/Core/Systems/Manager/SystemManager.cpp
+        src/Core/Systems/Managers/SystemManager.cpp
 )
 
 # add_library(${NAME} SHARED

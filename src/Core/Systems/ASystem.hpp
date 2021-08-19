@@ -18,16 +18,21 @@ class ASystem {
         ASystem(const float &updateInterval = 0) : _updateInterval(updateInterval) {}
         virtual ~ASystem();
 
-        virtual const SystemTypeID getSystemTypeID() const = 0;
+        virtual SystemTypeID getSystemTypeID() const = 0;
         virtual const char *getSystemTypeName() const = 0;
         virtual void update() = 0;
 
         bool getEnabled() const { return _enabled; }
         void setEnabled(bool enable) { _enabled = enable; }
-        const float getUpdateInterval() const { return _updateInterval; }
+
+        float getUpdateInterval() const { return _updateInterval; }
         void setUpdateInterval(const float &interval) { _updateInterval = interval; }
+
+        float getTimeSinceLastUpdate() const { return _timeSinceLastUpdate; }
+        void setTimeSinceLastUpdate(const float &time) { _timeSinceLastUpdate = time; }
     protected:
         float _updateInterval;
+        float _timeSinceLastUpdate;
         bool _enabled;
     private:
 };

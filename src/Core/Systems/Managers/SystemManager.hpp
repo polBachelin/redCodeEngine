@@ -59,7 +59,7 @@ class SystemManager {
                 LOG_F(ERROR, "No system of type \'%s\' has been registered", typeid(T).name());
         }
 
-        void update();
+        void update(float tick_time);
 
     protected:
         std::vector<ASystem *> _systemsToExecute;
