@@ -18,6 +18,8 @@ find_package(Threads)
 
 ## Includes
 include_directories(./include)
+include_directories(./include/utils)
+
 include_directories(./src)
 include_directories(./src/Core)
 include_directories(./src/utils)
@@ -47,6 +49,7 @@ include_directories(./loguru)
 set(SRCS
         src/main.cpp
         loguru/loguru.cpp
+        src/utils/Clock.cpp
         src/Entity_Tests/Bomb.cpp
         src/Entity_Tests/Transform.cpp
         src/Core/Entity/Manager/EntityManager.cpp
