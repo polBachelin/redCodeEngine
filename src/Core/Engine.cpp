@@ -11,7 +11,7 @@ Engine::Engine()
 {
     _systemManager = std::make_shared<SystemManager>();
     _componentManager = std::make_shared<ComponentManager>();
-    _entityManager = std::make_shared<EntityManager>(_componentManager);
+    _entityManager = std::make_shared<EntityManager>(_componentManager.get());
 }
 
 Engine::~Engine()

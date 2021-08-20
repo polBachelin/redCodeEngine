@@ -19,6 +19,7 @@ find_package(Threads)
 ## Includes
 include_directories(./include)
 include_directories(./include/utils)
+include_directories(./include/Core)
 
 include_directories(./src)
 include_directories(./src/Core)
@@ -52,6 +53,7 @@ set(SRCS
         src/utils/Clock.cpp
         src/Entity_Tests/Bomb.cpp
         src/Entity_Tests/Transform.cpp
+        src/Core/Engine.cpp
         src/Core/Entity/Manager/EntityManager.cpp
         src/Core/Components/Manager/ComponentManager.cpp
         src/Core/Systems/Managers/SystemManager.cpp
