@@ -18,20 +18,20 @@ Engine::~Engine()
 {
 }
 
-// EntityManager *Engine::getEntityManager() const
-// {
-//     return _entityManager;
-// }
+std::shared_ptr<EntityManager> Engine::getEntityManager() const
+{
+    return _entityManager;
+}
 
-// ComponentManager *Engine::getComponentManager() const
-// {
-//     return _componentManager;
-// }
+std::shared_ptr<ComponentManager> Engine::getComponentManager() const
+{
+    return _componentManager;
+}
 
-// SystemManager *Engine::getSystemManager() const
-// {
-//     return _systemManager;
-// }
+std::shared_ptr<SystemManager> Engine::getSystemManager() const
+{
+    return _systemManager;
+}
 
 void Engine::update(float dt)
 {

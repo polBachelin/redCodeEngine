@@ -19,9 +19,9 @@ class Engine {
         Engine();
         ~Engine();
 
-        // EntityManager *getEntityManager() const;
-        // ComponentManager *getComponentManager() const;
-        // SystemManager *getSystemManager() const;
+        std::shared_ptr<EntityManager> getEntityManager() const;
+        std::shared_ptr<ComponentManager> getComponentManager() const;
+        std::shared_ptr<SystemManager> getSystemManager() const;
         
         void update(float dt);
     protected:
