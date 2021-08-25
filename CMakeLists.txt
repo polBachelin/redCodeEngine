@@ -21,21 +21,18 @@ include_directories(./include)
 include_directories(./include/utils)
 include_directories(./include/Core)
 
-include_directories(./src)
-include_directories(./src/Core)
-include_directories(./src/utils)
 
-include_directories(./src/Core/Components)
-include_directories(./src/Core/Components/Manager)
-include_directories(./src/Core/Components/Pool)
+include_directories(./include/Core/Components)
+include_directories(./include/Core/Components/Manager)
+include_directories(./include/Core/Components/Pool)
 
-include_directories(./src/Core/Entity)
-include_directories(./src/Core/Entity/Manager)
-include_directories(./src/Core/Entity/utils)
-include_directories(./src/Core/Entity/Pool)
+include_directories(./include/Core/Entity)
+include_directories(./include/Core/Entity/Manager)
+include_directories(./include/Core/Entity/utils)
+include_directories(./include/Core/Entity/Pool)
 
-include_directories(./src/Core/Systems)
-include_directories(./src/Core/Systems/Managers)
+include_directories(./include/Core/Systems)
+include_directories(./include/Core/Systems/Manager)
 
 include_directories(./src/Core/Allocators)
 include_directories(./loguru)
@@ -52,7 +49,7 @@ set(SRCS
         src/Core/Engine.cpp
         src/Core/Entity/Manager/EntityManager.cpp
         src/Core/Components/Manager/ComponentManager.cpp
-        src/Core/Systems/Managers/SystemManager.cpp
+        src/Core/Systems/Manager/SystemManager.cpp
 )
 
 add_library(${NAME} SHARED
