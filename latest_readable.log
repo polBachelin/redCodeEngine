@@ -1,24 +1,10 @@
 File verbosity level: 0
 date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
-2021-08-17 15:26:27.572 (   0.038s) [         4E05B80]             loguru.cpp:830   INFO| Logging to 'latest_readable.log', mode: 'w', verbosity: 0
-2021-08-17 15:26:27.577 (   0.043s) [         4E05B80]               main.cpp:19    INFO| STARTING MAIN
-2021-08-17 15:26:27.578 (   0.044s) [         4E05B80]   ComponentManager.cpp:12    INFO| Initializing Component Manager
-2021-08-17 15:26:27.584 (   0.050s) [         4E05B80]             TypeID.hpp:34    INFO| Type count 1
-2021-08-17 15:26:27.610 (   0.076s) [         4E05B80]      EntityManager.cpp:13    INFO| Initializing EntityManager!
-2021-08-17 15:26:27.610 (   0.076s) [         4E05B80]               Bomb.cpp:12    INFO| Creating bomb entity
-2021-08-17 15:26:27.614 (   0.080s) [         4E05B80]         EntityPool.hpp:20    INFO| Creating entity Pool
-2021-08-17 15:26:27.628 (   0.094s) [         4E05B80]      EntityManager.hpp:31    INFO| Created entity with ID : 0 || and || TYPE : 4Bomb
-2021-08-17 15:26:27.629 (   0.095s) [         4E05B80]               Bomb.cpp:12    INFO| Creating bomb entity
-2021-08-17 15:26:27.629 (   0.095s) [         4E05B80]      EntityManager.hpp:31    INFO| Created entity with ID : 1 || and || TYPE : 4Bomb
-2021-08-17 15:26:27.630 (   0.096s) [         4E05B80]          Transform.cpp:12    INFO| Creating Transform Component
-2021-08-17 15:26:27.640 (   0.106s) [         4E05B80]      ComponentPool.hpp:19    INFO| Creating Component Pool
-2021-08-17 15:26:27.649 (   0.115s) [         4E05B80]   ComponentManager.cpp:33    INFO| Mapping componentID to table : TYPE ID = 0
-2021-08-17 15:26:27.651 (   0.117s) [         4E05B80]   ComponentManager.hpp:48    INFO| Created component with ID : 0 || and || TYPE : 9Transform
-2021-08-17 15:26:27.655 (   0.121s) [         4E05B80]      EntityManager.cpp:43    INFO| Destroying entity of type : 4Bomb
-2021-08-17 15:26:27.656 (   0.122s) [         4E05B80]   ComponentManager.hpp:80    WARN| Nb components 1
-2021-08-17 15:26:27.658 (   0.124s) [         4E05B80]   ComponentManager.hpp:90    WARN| Calling destroy component from pool
-2021-08-17 15:26:27.661 (   0.127s) [         4E05B80]          Transform.cpp:17    INFO| Destroying Transform Component
-2021-08-17 15:26:27.664 (   0.130s) [         4E05B80]               Bomb.cpp:17    INFO| Destroying bomb entity
-2021-08-17 15:26:27.666 (   0.132s) [         4E05B80]               main.cpp:32    INFO| ENDING MAIN
-2021-08-17 15:26:27.666 (   0.132s) [         4E05B80]   ComponentManager.cpp:19    INFO| Destroying Component Manager
-2021-08-17 15:26:27.674 (   0.140s) [         4E05B80]             loguru.cpp:662   INFO| loguru::shutdown()
+2021-08-25 12:10:00.517 (   0.000s) [          983740]             loguru.cpp:830   INFO| Logging to 'latest_readable.log', mode: 'w', verbosity: 0
+2021-08-25 12:10:00.517 (   0.000s) [          983740]               main.cpp:20    INFO| STARTING MAIN
+2021-08-25 12:10:00.517 (   0.000s) [          983740]      SystemManager.cpp:12    INFO| Initializing the System Manager
+2021-08-25 12:10:00.517 (   0.000s) [          983740]   ComponentManager.cpp:12    INFO| Initializing Component Manager
+2021-08-25 12:10:00.517 (   0.000s) [          983740]             TypeID.hpp:34    INFO| Type count 0
+2021-08-25 12:10:00.517 (   0.000s) [          983740]      EntityManager.cpp:13    INFO| Initializing EntityManager!
+2021-08-25 12:10:00.517 (   0.000s) [          983740]               main.cpp:24    INFO| ENDING MAIN
+2021-08-25 12:10:00.517 (   0.000s) [          983740]             loguru.cpp:662   INFO| loguru::shutdown()

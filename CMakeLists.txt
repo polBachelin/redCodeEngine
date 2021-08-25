@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_COLOR_MAKEFILE ON)
 set(spdlog_DIR spdlog/build)
-set(NAME redCode)
+set(NAME redCodeEngine)
 
 project(${NAME}Engine
 LANGUAGES CXX
@@ -24,7 +24,6 @@ include_directories(./include/Core)
 include_directories(./src)
 include_directories(./src/Core)
 include_directories(./src/utils)
-include_directories(./src/Entity_Tests)
 
 include_directories(./src/Core/Components)
 include_directories(./src/Core/Components/Manager)
@@ -48,28 +47,25 @@ include_directories(./loguru)
 #install(PROGRAMS ${Boost_LIBRARIES} DESTINATION ./lib)
 
 set(SRCS
-        src/main.cpp
         loguru/loguru.cpp
         src/utils/Clock.cpp
-        src/Entity_Tests/Bomb.cpp
-        src/Entity_Tests/Transform.cpp
         src/Core/Engine.cpp
         src/Core/Entity/Manager/EntityManager.cpp
         src/Core/Components/Manager/ComponentManager.cpp
         src/Core/Systems/Managers/SystemManager.cpp
 )
 
-# add_library(${NAME} SHARED
-#         ${SRCS}
-# )
+add_library(${NAME} SHARED
+        ${SRCS}
+)
 
-add_executable(${NAME} ${SRCS})
+#add_executable(${NAME} ${SRCS})
 target_link_libraries(${NAME} ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(${NAME} dl)
 target_include_directories(${NAME} PRIVATE .)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
-#set_target_properties(${NAME} PROPERTIES VERSION ${PROJECT_VERSION})
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+# set_target_properties(${NAME} PROPERTIES VERSION ${PROJECT_VERSION})
 
 #install (TARGETS ${NAME}
 #        LIBRARY DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}

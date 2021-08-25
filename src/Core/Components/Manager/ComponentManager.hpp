@@ -91,7 +91,7 @@ class ComponentManager {
                     pool->second->destroyComponent(c);
                 } else
                     LOG_F(ERROR, "Trying to destroy non-existant component");
-                unmapEntityComponentFromTable(id, componentId, i);
+                unmapEntityComponentFromTable(id, i);
             }
         }
 
@@ -109,7 +109,7 @@ class ComponentManager {
 
         ComponentID generateComponentID(AComponent *c);
         void mapEntityComponentToTable(const EntityID &id, const ComponentID &cId, const ComponentTypeID &typeID);
-        void unmapEntityComponentFromTable(const EntityID &id, const ComponentID &cID, const ComponentTypeID &typeID);
+        void unmapEntityComponentFromTable(const EntityID &id, const ComponentTypeID &typeID);
         void memsetTable(size_t start, size_t end);
 
     protected:

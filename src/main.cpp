@@ -11,26 +11,17 @@
 #include "Transform.hpp"
 #include <iostream>
 #include "loguru/loguru.hpp"
+#include "Engine.hpp"
 
 int main(void)
 {
     loguru::g_stderr_verbosity = 1;
     loguru::add_file("latest_readable.log", loguru::Truncate, loguru::Verbosity_INFO);
     LOG_F(INFO, "STARTING MAIN");
-    ComponentManager *componentManager = new ComponentManager();
-    EntityManager manager(componentManager);
+    ECS::Engine engine;
 
-    EntityID id = manager.createEntity<Bomb>();
-    manager.createEntity<Bomb>();
-    manager.getComponentManager()->addComponentToEntity<Transform>(id, 10, 10);
-    manager.destroyEntity(0);
-    manager.cleanDestroyedEntities();
-    // std::cout << tab.addObjectToTable(test) << std::endl;
-    // std::cout << tab.addObjectToTable(nb) << std::endl;
-    // std::cout << nb->getEntityID() << std::endl;
-    // std::cout << test->getEntityTypeID() << std::endl;
+    engine.update(1.0f);
     LOG_F(INFO, "ENDING MAIN");
-    delete componentManager;
     loguru::shutdown();
     return 0;
 }

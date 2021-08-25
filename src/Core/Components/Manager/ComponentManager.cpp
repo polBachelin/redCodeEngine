@@ -34,7 +34,7 @@ void ComponentManager::mapEntityComponentToTable(const EntityID &id, const Compo
     _entityComponentTable[id][typeID] = cId;
 }
 
-void ComponentManager::unmapEntityComponentFromTable(const EntityID &id, const ComponentID &cID, const ComponentTypeID &typeID)
+void ComponentManager::unmapEntityComponentFromTable(const EntityID &id, const ComponentTypeID &typeID)
 {
     _entityComponentTable[id][typeID] = INVALID_TYPE_ID;
 }

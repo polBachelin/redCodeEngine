@@ -7,6 +7,8 @@
 
 #include "Engine.hpp"
 
+using namespace ECS;
+
 Engine::Engine()
 {
     _systemManager = std::make_shared<SystemManager>();
