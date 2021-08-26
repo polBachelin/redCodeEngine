@@ -10,6 +10,7 @@
 
 #include "AScene.hpp"
 #include <memory>
+#include <algorithm>    // std::find
 
 class SceneManager {
     public:

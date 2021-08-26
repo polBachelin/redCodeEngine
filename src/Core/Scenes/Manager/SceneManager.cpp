@@ -7,13 +7,13 @@
 
 #include "SceneManager.hpp"
 
-SceneManager::SceneManager()
-{
-}
+// SceneManager::SceneManager()
+// {
+// }
 
-SceneManager::~SceneManager()
-{
-}
+// SceneManager::~SceneManager()
+// {
+// }
 
 void SceneManager::update()
 {

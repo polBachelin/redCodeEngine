@@ -34,6 +34,9 @@ include_directories(./include/Core/Entity/Pool)
 include_directories(./include/Core/Systems)
 include_directories(./include/Core/Systems/Manager)
 
+include_directories(./include/Core/Scenes)
+include_directories(./include/Core/Scenes/Manager)
+
 include_directories(./src/Core/Allocators)
 include_directories(./loguru)
 #find_package(
@@ -50,10 +53,11 @@ set(SRCS
         src/Core/Entity/Manager/EntityManager.cpp
         src/Core/Components/Manager/ComponentManager.cpp
         src/Core/Systems/Manager/SystemManager.cpp
+        src/Core/Scenes/Manager/SceneManager.cpp
 )
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
-add_library(${NAME}
+add_library(${NAME} SHARED
         ${SRCS}
 )
 
