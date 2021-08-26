@@ -10,7 +10,7 @@
 
 #include "IEntityPool.hpp"
 #include <list>
-#include "loguru/loguru.hpp"
+#include "loguru.hpp"
 #include <typeinfo>
 
 template<class T>

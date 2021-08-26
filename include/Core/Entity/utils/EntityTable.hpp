@@ -10,7 +10,7 @@
 
 #include <vector>
 #include "Entity.hpp"
-#include "loguru/loguru.hpp"
+#include "loguru.hpp"
 #include "GlobalVariables.hpp"
 
 template<typename T>

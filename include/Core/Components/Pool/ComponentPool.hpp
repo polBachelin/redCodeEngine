@@ -10,7 +10,7 @@
 
 #include "IComponentPool.hpp"
 #include <list>
-#include "loguru/loguru.hpp"
+#include "loguru.hpp"
 
 template<class T>
 class ComponentPool : public IComponentPool {

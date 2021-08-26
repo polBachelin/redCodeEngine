@@ -14,7 +14,7 @@
 #include "ComponentManager.hpp"
 #include <unordered_map>
 #include <vector>
-#include "loguru/loguru.hpp"
+#include "loguru.hpp"
 
 class EntityManager {
     public:

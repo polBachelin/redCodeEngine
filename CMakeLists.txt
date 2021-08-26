@@ -52,7 +52,8 @@ set(SRCS
         src/Core/Systems/Manager/SystemManager.cpp
 )
 
-add_library(${NAME} SHARED
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+add_library(${NAME}
         ${SRCS}
 )
 

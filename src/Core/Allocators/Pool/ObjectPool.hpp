@@ -11,7 +11,7 @@
 #include <cstddef>
 #include <iostream>
 #include <list>
-#include "loguru/loguru.hpp"
+#include "loguru.hpp"
 
 template<class Object, size_t MAX_OBJECTS>
 class ObjectPool {
