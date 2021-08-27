@@ -52,8 +52,8 @@ class SceneManager {
         std::vector<AScene *> _scenes;
         std::vector<SceneTypeID> _sceneTypes;
         AScene *_currentScene = nullptr;
-        SystemManager &_systemManager;
         EntityManager &_entityManager;
+        SystemManager &_systemManager;
     private:
 };
 

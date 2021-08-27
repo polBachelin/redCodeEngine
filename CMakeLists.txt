@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_COLOR_MAKEFILE ON)
 set(spdlog_DIR spdlog/build)
-set(NAME redCodeEngine)
+set(NAME gameEngine)
 
-project(${NAME}Engine
+project(${NAME}
 LANGUAGES CXX
 VERSION 0.1
 DESCRIPTION "Game Engine to learn"
@@ -61,17 +61,9 @@ add_library(${NAME} SHARED
         ${SRCS}
 )
 
-#add_executable(${NAME} ${SRCS})
 target_link_libraries(${NAME} ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(${NAME} dl)
 target_include_directories(${NAME} PRIVATE .)
-
-# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
-# set_target_properties(${NAME} PROPERTIES VERSION ${PROJECT_VERSION})
-
-#install (TARGETS ${NAME}
-#        LIBRARY DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-#        PUBLIC_HEADER_DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 if (MVSVC)
         target_compile_options(${NAME} PRIVATE /W4 /WX)

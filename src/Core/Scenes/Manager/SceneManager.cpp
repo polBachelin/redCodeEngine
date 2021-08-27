@@ -18,6 +18,10 @@ _entityManager(entityManager), _systemManager(systemManager)
 
 void SceneManager::update(float dt)
 {
+    if (_currentScene == nullptr) {
+        LOG_F(INFO, "No current scene");
+        return;
+    }
     _systemManager.update(dt);
     _currentScene->update();
     _entityManager.cleanDestroyedEntities();
