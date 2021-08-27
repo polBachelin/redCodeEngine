@@ -14,7 +14,7 @@
 
 class SceneManager {
     public:
-        SceneManager() = default;
+        SceneManager(SystemManager &systemManager, EntityManager &entityManager);
         ~SceneManager() = default;
 
         template<class T, class... Args>
@@ -47,11 +47,13 @@ class SceneManager {
             }
         }
 
-        void update();
+        void update(float dt);
     protected:
         std::vector<AScene *> _scenes;
         std::vector<SceneTypeID> _sceneTypes;
         AScene *_currentScene = nullptr;
+        SystemManager &_systemManager;
+        EntityManager &_entityManager;
     private:
 };
 

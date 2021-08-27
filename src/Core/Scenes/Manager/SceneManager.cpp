@@ -7,15 +7,18 @@
 
 #include "SceneManager.hpp"
 
-// SceneManager::SceneManager()
-// {
-// }
+SceneManager::SceneManager(SystemManager &systemManager, EntityManager &entityManager) :
+_entityManager(entityManager), _systemManager(systemManager)
+{
+}
 
 // SceneManager::~SceneManager()
 // {
 // }
 
-void SceneManager::update()
+void SceneManager::update(float dt)
 {
+    _systemManager.update(dt);
     _currentScene->update();
+    _entityManager.cleanDestroyedEntities();
 }

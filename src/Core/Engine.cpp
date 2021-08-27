@@ -14,6 +14,7 @@ Engine::Engine()
     _systemManager = std::make_shared<SystemManager>();
     _componentManager = std::make_shared<ComponentManager>();
     _entityManager = std::make_shared<EntityManager>(_componentManager.get());
+    _sceneManager = std::make_shared<SceneManager>(*_systemManager, *_entityManager);
 }
 
 Engine::~Engine()
@@ -35,8 +36,12 @@ std::shared_ptr<SystemManager> Engine::getSystemManager() const
     return _systemManager;
 }
 
+std::shared_ptr<SceneManager> Engine::getSceneManager() const
+{
+    return _sceneManager;
+}
+
 void Engine::update(float dt)
 {
-    _systemManager->update(dt);
-    _entityManager->cleanDestroyedEntities();
+    _sceneManager->update(dt);
 }
