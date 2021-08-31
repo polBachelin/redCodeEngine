@@ -24,7 +24,7 @@ class SceneManager {
 
             if (std::find(_sceneTypes.begin(), _sceneTypes.end(), type) != _sceneTypes.end()) {
                 AScene *s = new T(std::forward<Args>(args)...);
-                _scenes[type] = s;
+                _scenes.push_back(s);
                 _sceneTypes.push_back(type);
                 LOG_F(INFO, "Created scene with ID : %i || and || TYPE : %s", type, typeid(T).name());
                 return s;
@@ -40,9 +40,13 @@ class SceneManager {
 
             if (std::find(_sceneTypes.begin(), _sceneTypes.end(), type) != _sceneTypes.end()) {
                 if (_currentScene != nullptr) {
+                    LOG_F(INFO, "Ending current scene");
                     _currentScene->end();
                 }
                 _currentScene = _scenes[type];
+                /*TODO Be careful here, when scenes are destroyed and eventually removed from the vector
+                the indexes will not be the same anymore
+                */
                 _currentScene->start();
             }
         }

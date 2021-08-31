@@ -16,9 +16,9 @@ class Scene : public AScene {
         Scene() {};
         ~Scene() {};
 
-        void start() override;
-        void update() override;
-        void end() override;
+        virtual void start() override;
+        virtual void update() override;
+        virtual void end() override;
 
         SceneTypeID getSceneTypeID() const { return _sceneTypeID; }
         static const SceneTypeID _sceneTypeID;
