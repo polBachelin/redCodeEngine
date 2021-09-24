@@ -18,3 +18,6 @@ This is a typed engine, meaning every entity, component and system are divided i
 - [] PoolAllocator
 - [] LinearAllocator
 - [] Typed Table to replace Maps
+- [] Rendering system
+- [] Basic components (Transform, Collider)
+- [] Collision System
